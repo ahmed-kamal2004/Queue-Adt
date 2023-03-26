@@ -9,6 +9,10 @@ private:
 	Node<T>* Front;
 	Node<T>* Rear;
 public:
+	Queue_list(){
+		this->Front=nullptr;
+		this->Rear=nullptr;
+	}
 	virtual bool isEmpty() const{
 
 		return !Front && !Rear;
@@ -54,7 +58,7 @@ public:
 			x = this->peekFront();
 		}
 		cout << endl;
-
+		// can be while(this->dequeue());
 	}
 
 };
