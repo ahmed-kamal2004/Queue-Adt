@@ -12,14 +12,15 @@ private:
 	int Back;
 public:
 	Circular_Queue() {
-		count = 0;
 		Front = 0;
-		Back = Max - 1;
+		Back = 0;
 	}
 	bool isEmpty()const {
-		return !this->count;
+		return this->Back==this->Front;
 	}
-
+	bool isFull()const{
+		return (this->Back + 1) % Max==this->Back;
+	}
 	T peekFront()const {
 		if (this->isEmpty())
 			return NULL;
@@ -33,7 +34,7 @@ public:
 		return true;
 	}
 	bool enqueue(const T& item) {
-		if (count == Max)
+		if (this->isFull())
 			return false;
 		this->Back = (this->Back + 1) % Max;
 		count++;
